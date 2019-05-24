@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Examples &#8212; inquirer 2.6.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changes.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>You can find all these examples at <code class="code docutils literal notranslate"><span class="pre">examples</span></code> directory.</p>
+<div class="section" id="text-py">
+<h2>text.py<a class="headerlink" href="#text-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+<span class="kn">from</span> <span class="nn">inquirer</span> <span class="k">import</span> <span class="n">errors</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">phone_validation</span><span class="p">(</span><span class="n">answers</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;\+?\d[\d ]+\d&#39;</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t like your phone number!&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;surname&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What&#39;s your surname, </span><span class="si">{name}</span><span class="s2">?&quot;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;phone&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What&#39;s your phone number&quot;</span><span class="p">,</span>
+                  <span class="n">validate</span><span class="o">=</span><span class="n">phone_validation</span><span class="p">,</span>
+                  <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result on something like:</p>
+<p><img alt="Example of Text Question" src="_images/inquirer_text.png" /></p>
+</div>
+<div class="section" id="confirm-py">
+<h2>confirm.py<a class="headerlink" href="#confirm-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Confirm</span><span class="p">(</span><span class="s1">&#39;continue&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Should I continue&quot;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Confirm</span><span class="p">(</span><span class="s1">&#39;stop&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Should I stop&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result on something like:</p>
+<p><img alt="Example of Confirm Question" src="_images/inquirer_confirm.png" /></p>
+</div>
+<div class="section" id="list-py">
+<h2>list.py<a class="headerlink" href="#list-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What size do you need?&quot;</span><span class="p">,</span>
+                  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Jumbo&#39;</span><span class="p">,</span> <span class="s1">&#39;Large&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Small&#39;</span><span class="p">,</span> <span class="s1">&#39;Micro&#39;</span><span class="p">],</span>
+              <span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result on something like:</p>
+<p><img alt="Example of List Question" src="_images/inquirer_list.png" /></p>
+</div>
+<div class="section" id="checkbox-py">
+<h2>checkbox.py<a class="headerlink" href="#checkbox-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s1">&#39;interests&#39;</span><span class="p">,</span>
+                      <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What are you interested in?&quot;</span><span class="p">,</span>
+                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Computers&#39;</span><span class="p">,</span> <span class="s1">&#39;Books&#39;</span><span class="p">,</span> <span class="s1">&#39;Science&#39;</span><span class="p">,</span> <span class="s1">&#39;Nature&#39;</span><span class="p">,</span> <span class="s1">&#39;Fantasy&#39;</span><span class="p">,</span> <span class="s1">&#39;History&#39;</span><span class="p">],</span>
+                      <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Computers&#39;</span><span class="p">,</span> <span class="s1">&#39;Books&#39;</span><span class="p">]),</span>
+<span class="p">]</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result on something like:</p>
+<p><img alt="Example of Checkbox Question" src="_images/inquirer_checkbox.png" /></p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">choices</span></code> list can also be a list of tuples. The first value in each tuple should be the label displayed to the user. The second value in each tuple should be the actual value for that option. This allows you to have the user choose options that are not plain strings in the code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s1">&#39;interests&#39;</span><span class="p">,</span>
+                      <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What are you interested in?&quot;</span><span class="p">,</span>
+                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span>
+                          <span class="p">(</span><span class="s1">&#39;Computers&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;Books&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;Science&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;Nature&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;Fantasy&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;History&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">),</span>
+                      <span class="p">],</span>
+                      <span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]),</span>
+<span class="p">]</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="theme-py">
+<h2>theme.py<a class="headerlink" href="#theme-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inquirer</span>
+<span class="kn">from</span> <span class="nn">inquirer.themes</span> <span class="k">import</span> <span class="n">GreenPassion</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Whats your name?&#39;</span><span class="p">,</span>
+                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;No one&#39;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="s1">&#39;jon&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Does Jon Snow know?&#39;</span><span class="p">,</span>
+                  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">],</span>
+                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s1">&#39;kill_list&#39;</span><span class="p">,</span>
+                      <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Who you want to kill?&#39;</span><span class="p">,</span>
+                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cersei&#39;</span><span class="p">,</span> <span class="s1">&#39;Littlefinger&#39;</span><span class="p">,</span> <span class="s1">&#39;The Mountain&#39;</span><span class="p">]</span>
+                      <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">GreenPassion</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Result on something like:</p>
+<p><img alt="Example of theme (GreenPassion)" src="_images/inquirer_theme.gif" /></p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">inquirer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#text-py">text.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#confirm-py">confirm.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-py">list.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checkbox-py">checkbox.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#theme-py">theme.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html#hall-of-fame">Hall Of Fame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">The MIT License (MIT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">inquirer</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="changes.html" title="next chapter">Changelog</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Miguel Ángel García & Adam Uhlíř.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/examples.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

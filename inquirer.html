@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>inquirer package &#8212; inquirer 2.6.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="inquirer.render package" href="inquirer.render.html" />
+    <link rel="prev" title="inquirer" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="inquirer-package">
+<h1>inquirer package<a class="headerlink" href="#inquirer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="inquirer.render.html">inquirer.render package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inquirer.render.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inquirer.render.console.html">inquirer.render.console package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="inquirer.render.console.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inquirer.render.console.html#module-inquirer.render.console.base">inquirer.render.console.base module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inquirer.render.console.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="inquirer.render.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-inquirer.errors">
+<span id="inquirer-errors-module"></span><h2>inquirer.errors module<a class="headerlink" href="#module-inquirer.errors" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="inquirer.errors.Aborted">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">Aborted</code><a class="headerlink" href="#inquirer.errors.Aborted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.errors.InquirerError" title="inquirer.errors.InquirerError"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.errors.InquirerError</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="inquirer.errors.EndOfInput">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">EndOfInput</code><span class="sig-paren">(</span><em>selection</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.errors.EndOfInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.errors.InquirerError" title="inquirer.errors.InquirerError"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.errors.InquirerError</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="inquirer.errors.InquirerError">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">InquirerError</code><a class="headerlink" href="#inquirer.errors.InquirerError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="inquirer.errors.ThemeError">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">ThemeError</code><a class="headerlink" href="#inquirer.errors.ThemeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeError</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="inquirer.errors.UnknownQuestionTypeError">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">UnknownQuestionTypeError</code><a class="headerlink" href="#inquirer.errors.UnknownQuestionTypeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.errors.InquirerError" title="inquirer.errors.InquirerError"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.errors.InquirerError</span></code></a></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="inquirer.errors.ValidationError">
+<em class="property">exception </em><code class="descclassname">inquirer.errors.</code><code class="descname">ValidationError</code><span class="sig-paren">(</span><em>value</em>, <em>reason=None</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.errors.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.errors.InquirerError" title="inquirer.errors.InquirerError"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.errors.InquirerError</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-inquirer.events">
+<span id="inquirer-events-module"></span><h2>inquirer.events module<a class="headerlink" href="#module-inquirer.events" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="inquirer.events.Event">
+<em class="property">class </em><code class="descclassname">inquirer.events.</code><code class="descname">Event</code><a class="headerlink" href="#inquirer.events.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.events.KeyEventGenerator">
+<em class="property">class </em><code class="descclassname">inquirer.events.</code><code class="descname">KeyEventGenerator</code><span class="sig-paren">(</span><em>key_generator=None</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.events.KeyEventGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="inquirer.events.KeyEventGenerator.next">
+<code class="descname">next</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.events.KeyEventGenerator.next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.events.KeyPressed">
+<em class="property">class </em><code class="descclassname">inquirer.events.</code><code class="descname">KeyPressed</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.events.KeyPressed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.events.Event" title="inquirer.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.events.Event</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.events.Repaint">
+<em class="property">class </em><code class="descclassname">inquirer.events.</code><code class="descname">Repaint</code><a class="headerlink" href="#inquirer.events.Repaint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.events.Event" title="inquirer.events.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.events.Event</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="inquirer-prompt-module">
+<h2>inquirer.prompt module<a class="headerlink" href="#inquirer-prompt-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-inquirer.questions">
+<span id="inquirer-questions-module"></span><h2>inquirer.questions module<a class="headerlink" href="#module-inquirer.questions" title="Permalink to this headline">¶</a></h2>
+<p>Module that implements the questions types</p>
+<dl class="class">
+<dt id="inquirer.questions.Checkbox">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Checkbox</code><span class="sig-paren">(</span><em>name</em>, <em>message=''</em>, <em>choices=None</em>, <em>default=None</em>, <em>ignore=False</em>, <em>validate=True</em>, <em>show_default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Checkbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Question" title="inquirer.questions.Question"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Question</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Checkbox.kind">
+<code class="descname">kind</code><em class="property"> = 'checkbox'</em><a class="headerlink" href="#inquirer.questions.Checkbox.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Confirm">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Confirm</code><span class="sig-paren">(</span><em>name</em>, <em>default=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Confirm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Question" title="inquirer.questions.Question"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Question</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Confirm.kind">
+<code class="descname">kind</code><em class="property"> = 'confirm'</em><a class="headerlink" href="#inquirer.questions.Confirm.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Editor">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Editor</code><span class="sig-paren">(</span><em>name</em>, <em>message=''</em>, <em>default=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Editor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Text" title="inquirer.questions.Text"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Text</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Editor.kind">
+<code class="descname">kind</code><em class="property"> = 'editor'</em><a class="headerlink" href="#inquirer.questions.Editor.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.List">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">List</code><span class="sig-paren">(</span><em>name</em>, <em>message=''</em>, <em>choices=None</em>, <em>default=None</em>, <em>ignore=False</em>, <em>validate=True</em>, <em>carousel=False</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.List" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Question" title="inquirer.questions.Question"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Question</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.List.kind">
+<code class="descname">kind</code><em class="property"> = 'list'</em><a class="headerlink" href="#inquirer.questions.List.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Password">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Password</code><span class="sig-paren">(</span><em>name</em>, <em>echo='*'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Text" title="inquirer.questions.Text"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Text</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Password.kind">
+<code class="descname">kind</code><em class="property"> = 'password'</em><a class="headerlink" href="#inquirer.questions.Password.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Path">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Path</code><span class="sig-paren">(</span><em>name</em>, <em>default=None</em>, <em>path_type='any'</em>, <em>exists=None</em>, <em>normalize_to_absolute_path=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Text" title="inquirer.questions.Text"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Text</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Path.ANY">
+<code class="descname">ANY</code><em class="property"> = 'any'</em><a class="headerlink" href="#inquirer.questions.Path.ANY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Path.DIRECTORY">
+<code class="descname">DIRECTORY</code><em class="property"> = 'directory'</em><a class="headerlink" href="#inquirer.questions.Path.DIRECTORY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Path.FILE">
+<code class="descname">FILE</code><em class="property"> = 'file'</em><a class="headerlink" href="#inquirer.questions.Path.FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Path.kind">
+<code class="descname">kind</code><em class="property"> = 'path'</em><a class="headerlink" href="#inquirer.questions.Path.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="inquirer.questions.Path.normalize_value">
+<code class="descname">normalize_value</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Path.normalize_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="inquirer.questions.Path.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Path.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Question">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Question</code><span class="sig-paren">(</span><em>name</em>, <em>message=''</em>, <em>choices=None</em>, <em>default=None</em>, <em>ignore=False</em>, <em>validate=True</em>, <em>show_default=False</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Question" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Question.choices">
+<code class="descname">choices</code><a class="headerlink" href="#inquirer.questions.Question.choices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Question.choices_generator">
+<code class="descname">choices_generator</code><a class="headerlink" href="#inquirer.questions.Question.choices_generator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Question.default">
+<code class="descname">default</code><a class="headerlink" href="#inquirer.questions.Question.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Question.ignore">
+<code class="descname">ignore</code><a class="headerlink" href="#inquirer.questions.Question.ignore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Question.kind">
+<code class="descname">kind</code><em class="property"> = 'base question'</em><a class="headerlink" href="#inquirer.questions.Question.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="inquirer.questions.Question.message">
+<code class="descname">message</code><a class="headerlink" href="#inquirer.questions.Question.message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="inquirer.questions.Question.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><em>current</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Question.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.TaggedValue">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">TaggedValue</code><span class="sig-paren">(</span><em>label</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.TaggedValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.questions.Text">
+<em class="property">class </em><code class="descclassname">inquirer.questions.</code><code class="descname">Text</code><span class="sig-paren">(</span><em>name</em>, <em>message=''</em>, <em>default=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.Text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.questions.Question" title="inquirer.questions.Question"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.questions.Question</span></code></a></p>
+<dl class="attribute">
+<dt id="inquirer.questions.Text.kind">
+<code class="descname">kind</code><em class="property"> = 'text'</em><a class="headerlink" href="#inquirer.questions.Text.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.questions.is_pathname_valid">
+<code class="descclassname">inquirer.questions.</code><code class="descname">is_pathname_valid</code><span class="sig-paren">(</span><em>pathname</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.is_pathname_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>True</cite> if the passed pathname is a valid pathname for the current OS;
+<cite>False</cite> otherwise.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.questions.load_from_dict">
+<code class="descclassname">inquirer.questions.</code><code class="descname">load_from_dict</code><span class="sig-paren">(</span><em>question_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.load_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load one question from a dict.
+It requires the keys ‘name’ and ‘kind’.
+:return: The Question object with associated data.
+:return type: Question</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.questions.load_from_json">
+<code class="descclassname">inquirer.questions.</code><code class="descname">load_from_json</code><span class="sig-paren">(</span><em>question_json</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.load_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load Questions from a JSON string.
+:return: A list of Question objects with associated data if the JSON</p>
+<blockquote>
+<div><p>contains a list or a Question if the JSON contains a dict.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List or Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.questions.load_from_list">
+<code class="descclassname">inquirer.questions.</code><code class="descname">load_from_list</code><span class="sig-paren">(</span><em>question_list</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.load_from_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a list of questions from a list of dicts.
+It requires the keys ‘name’ and ‘kind’ for each dict.
+:return: A list of Question objects with associated data.
+:return type: List</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.questions.question_factory">
+<code class="descclassname">inquirer.questions.</code><code class="descname">question_factory</code><span class="sig-paren">(</span><em>kind</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.questions.question_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="inquirer-shortcuts-module">
+<h2>inquirer.shortcuts module<a class="headerlink" href="#inquirer-shortcuts-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-inquirer.themes">
+<span id="inquirer-themes-module"></span><h2>inquirer.themes module<a class="headerlink" href="#module-inquirer.themes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="inquirer.themes.Default">
+<em class="property">class </em><code class="descclassname">inquirer.themes.</code><code class="descname">Default</code><a class="headerlink" href="#inquirer.themes.Default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.themes.Theme" title="inquirer.themes.Theme"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.themes.Theme</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.themes.GreenPassion">
+<em class="property">class </em><code class="descclassname">inquirer.themes.</code><code class="descname">GreenPassion</code><a class="headerlink" href="#inquirer.themes.GreenPassion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#inquirer.themes.Theme" title="inquirer.themes.Theme"><code class="xref py py-class docutils literal notranslate"><span class="pre">inquirer.themes.Theme</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="inquirer.themes.Theme">
+<em class="property">class </em><code class="descclassname">inquirer.themes.</code><code class="descname">Theme</code><a class="headerlink" href="#inquirer.themes.Theme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.themes.load_theme_from_dict">
+<code class="descclassname">inquirer.themes.</code><code class="descname">load_theme_from_dict</code><span class="sig-paren">(</span><em>dict_theme</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.themes.load_theme_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a theme from a dict.
+Expected format:
+{</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“Question”: {</dt><dd><p>“mark_color”: “yellow”,
+“brackets_color”: “normal”,
+…</p>
+</dd>
+</dl>
+<p>},
+“List”: {</p>
+<blockquote>
+<div><p>“selection_color”: “bold_blue”,
+“selection_cursor”: “-&gt;”</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>Color values should be string representing valid blessings.Terminal colors.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="inquirer.themes.load_theme_from_json">
+<code class="descclassname">inquirer.themes.</code><code class="descname">load_theme_from_json</code><span class="sig-paren">(</span><em>json_theme</em><span class="sig-paren">)</span><a class="headerlink" href="#inquirer.themes.load_theme_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a theme from a json.
+Expected format:
+{</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“Question”: {</dt><dd><p>“mark_color”: “yellow”,
+“brackets_color”: “normal”,
+…</p>
+</dd>
+</dl>
+<p>},
+“List”: {</p>
+<blockquote>
+<div><p>“selection_color”: “bold_blue”,
+“selection_cursor”: “-&gt;”</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>Color values should be string representing valid blessings.Terminal colors.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-inquirer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-inquirer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">inquirer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html#hall-of-fame">Hall Of Fame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">The MIT License (MIT)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">inquirer</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">inquirer package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">inquirer</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">inquirer</a></li>
+      <li>Next: <a href="inquirer.render.html" title="next chapter">inquirer.render package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Miguel Ángel García & Adam Uhlíř.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/inquirer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

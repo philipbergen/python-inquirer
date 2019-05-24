@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Usage &#8212; inquirer 2.6.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>The idea is quite simple:</p>
+<ol class="arabic simple">
+<li><p>Create an array of <code class="code docutils literal notranslate"><span class="pre">Questions</span></code></p></li>
+<li><p>Call the prompt render.</p></li>
+</ol>
+<p>Each <code class="code docutils literal notranslate"><span class="pre">Question</span></code> require some common arguments. So, you just need to know which kind of <code class="code docutils literal notranslate"><span class="pre">Questions</span></code> and <code class="code docutils literal notranslate"><span class="pre">Arguments</span></code> are available.</p>
+<div class="section" id="question-types">
+<h2>Question types<a class="headerlink" href="#question-types" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>TEXT</strong></p></td>
+<td><p>Expects a text answer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>EDITOR</strong></p></td>
+<td><p>Expects a text answer, entered through external editor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PASSWORD</strong></p></td>
+<td><p>Do not prompt the answer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CONFIRM</strong></p></td>
+<td><p>Requires a boolean answer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LIST</strong></p></td>
+<td><p>Show a list and allow to select just one answer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CHECKBOX</strong></p></td>
+<td><p>Show a list and allow to select a bunch of them.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PATH</strong></p></td>
+<td><p>Requires valid path and allows additional validations.</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are pictures of some of them in the <span class="xref std std-ref">examples</span> section.</p>
+</div>
+<div class="section" id="question-arguments">
+<h2>Question Arguments<a class="headerlink" href="#question-arguments" title="Permalink to this headline">¶</a></h2>
+<p>The main object is <code class="code docutils literal notranslate"><span class="pre">Question</span></code>, but it should not be
+instantiated. You must use any of the subclasses, listed below. All of
+them have the next attributes that can be set in the initialization:</p>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<p>It will be the key in the hash of answers. So, it is <strong>mandatory</strong>.</p>
+<p>You can use any <code class="docutils literal notranslate"><span class="pre">String</span></code> or <code class="docutils literal notranslate"><span class="pre">hashable</span></code> code as value.</p>
+</div>
+<div class="section" id="message">
+<h3>message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h3>
+<p>Contains the prompt to be shown to the user, and is <strong>mandatory</strong> too.</p>
+<p>You can use a new style formatted string, using the previous answers, and it will be replaced automatically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Text</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">),</span>
+    <span class="n">Text</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;surname&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;What&#39;s your surname, {name}&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>The value can be a <code class="docutils literal notranslate"><span class="pre">function</span></code>, with the next sign:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_message</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_message</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;What&#39;s your name?&quot;</span>
+
+<span class="n">Text</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span> <span class="n">get_message</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">answers</span></code> is the dictionary with previous answers.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">message</span></code> is too long for the terminal, it will be cut to fit.</p>
+</div>
+<div class="section" id="default">
+<h3>default<a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h3>
+<p>Stores the default value to be used as answer. This allow the user just to press <cite>Enter</cite> to use it. It is optional, using <code class="docutils literal notranslate"><span class="pre">None</span></code> if there is no input and no default value.</p>
+<p>As in <a href="#id1"><span class="problematic" id="id2">``</span></a>message` , you can use a new format string or a function with the sign:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span> <span class="k">return</span> <span class="nb">str</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">answers</span></code> is a <code class="docutils literal notranslate"><span class="pre">dict</span></code> containing all previous answers.</p>
+<p>Remember that it should be a list for <cite>Checkbox</cite> questions.</p>
+</div>
+<div class="section" id="choices">
+<h3>choices<a class="headerlink" href="#choices" title="Permalink to this headline">¶</a></h3>
+<p><strong>Mandatory</strong> just for <code class="docutils literal notranslate"><span class="pre">Checkbox</span></code> and <code class="docutils literal notranslate"><span class="pre">List</span></code> questions; the rest of them do not use it.</p>
+<p>It contains the list of selectable answers.</p>
+<p>Its value can be a <code class="docutils literal notranslate"><span class="pre">list</span></code> of strings, new format style strings or pairs(tuples) or a <cite>function</cite> that returns that list, with the sign:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_choices</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span> <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">str</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If any of the list values is a pair, it should be a tuple like: <code class="docutils literal notranslate"><span class="pre">(label,</span> <span class="pre">value)</span></code>. Then the <code class="docutils literal notranslate"><span class="pre">label</span></code> will be shown but the <code class="docutils literal notranslate"><span class="pre">value</span></code> will be returned.</p>
+<p>As before, the <code class="docutils literal notranslate"><span class="pre">answers</span></code> is a <cite>dict</cite> containing the previous answers.</p>
+</div>
+<div class="section" id="validate">
+<h3>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
+<p>Optional attribute that allows the program to check if the answer is valid or not. It requires a <cite>boolean</cite> value or a <cite>function</cite> with the sign:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">answers</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span> <span class="k">return</span> <span class="n">boolean</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">answers</span></code> is a <cite>dict</cite> with previous answers again and <code class="docutils literal notranslate"><span class="pre">current</span></code> is the current answer.
+If you want to customize the validation message, you can raise your own error with specific reason:
+<code class="docutils literal notranslate"><span class="pre">inquirer.errors.ValidationError('',</span> <span class="pre">reason='your</span> <span class="pre">reason</span> <span class="pre">that</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">displayed</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">user')</span></code>
+inside the validation function, but be aware that if the validation passes you still have to return <cite>True</cite>!</p>
+<p>Example:</p>
+</div>
+<div class="section" id="ignore">
+<h3>ignore<a class="headerlink" href="#ignore" title="Permalink to this headline">¶</a></h3>
+<p>Questions are statically created and some of them may be optional depending on other answers. This attribute allows to control this by hiding the question.</p>
+<p>It’s value is <cite>boolean</cite> or a <cite>function</cite> with the sign:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ignore</span><span class="p">(</span><span class="n">answers</span><span class="p">):</span> <span class="k">return</span> <span class="n">boolean</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">answers</span></code> contains the <cite>dict</cite> of previous answers again.</p>
+</div>
+</div>
+<div class="section" id="path-question">
+<h2>Path Question<a class="headerlink" href="#path-question" title="Permalink to this headline">¶</a></h2>
+<p>Path Question accepts any valid path which can be both absolute or relative.
+By default it only validates the validity of the path. Except of validation
+it return normalized path and it expands home alias (~).</p>
+<p>The Path Question have additional arguments for validating paths.</p>
+<div class="section" id="path-type">
+<h3>path_type<a class="headerlink" href="#path-type" title="Permalink to this headline">¶</a></h3>
+<p>Validation argument that enables to enforce if the path should be aiming
+to file (<code class="docutils literal notranslate"><span class="pre">Path.FILE</span></code>) or directory (<code class="docutils literal notranslate"><span class="pre">Path.DIRECTORY</span></code>).</p>
+<p>By default nothing is enforced (<code class="docutils literal notranslate"><span class="pre">Path.ANY</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;log_file&#39;</span><span class="p">,</span> <span class="s1">&#39;Where should be log files located?&#39;</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">DIRECTORY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exists">
+<h3>exists<a class="headerlink" href="#exists" title="Permalink to this headline">¶</a></h3>
+<p>Validation argument that enables to enforce if the provided path should
+or should not exists. Expects <code class="docutils literal notranslate"><span class="pre">True</span></code> if the path should
+exists, or <code class="docutils literal notranslate"><span class="pre">False</span></code> if the path should not exists.</p>
+<p>By default nothing is enforced (<code class="docutils literal notranslate"><span class="pre">None</span></code>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;config_file&#39;</span><span class="p">,</span> <span class="s1">&#39;Point me to your configuration file.&#39;</span><span class="p">,</span> <span class="n">exists</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">path_type</span><span class="o">=</span><span class="n">Path</span><span class="o">.</span><span class="n">File</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="normalize-to-absolute-path">
+<h3>normalize_to_absolute_path<a class="headerlink" href="#normalize-to-absolute-path" title="Permalink to this headline">¶</a></h3>
+<p>Argument which will enable normalization on the provided path. When enabled, in case of relative path would be provided
+the Question will normalize it to absolute path.</p>
+<p>Expects <code class="docutils literal notranslate"><span class="pre">bool</span></code> value. Default <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;config_file&#39;</span><span class="p">,</span> <span class="s1">&#39;Point me to your configuration file.&#39;</span><span class="p">,</span> <span class="n">normalize_to_absolute_path</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-the-question-object">
+<h2>Creating the Question object<a class="headerlink" href="#creating-the-question-object" title="Permalink to this headline">¶</a></h2>
+<p>With this information, it is easy to create a <code class="docutils literal notranslate"><span class="pre">Question</span></code> object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It’s possible to load the <code class="code docutils literal notranslate"><span class="pre">Question</span></code> objects from a <code class="code docutils literal notranslate"><span class="pre">dict</span></code>, or even the whole list of them, with the method <code class="code docutils literal notranslate"><span class="pre">load_from_dict</span></code> and <code class="code docutils literal notranslate"><span class="pre">load_from_list</span></code>, respectively.</p>
+<p>The method <code class="code docutils literal notranslate"><span class="pre">load_from_json</span></code> has been added as commodity to use JSON inputs instead. Here you have an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+<span class="kn">import</span> <span class="nn">inquirer</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;examples/test_questions.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">questions</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">load_from_json</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">answers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-prompter">
+<h2>The prompter<a class="headerlink" href="#the-prompter" title="Permalink to this headline">¶</a></h2>
+<p>The last step is to call the <em>prompter</em> With the list of <code class="code docutils literal notranslate"><span class="pre">Question</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">answers</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This line will ask the user for information and will store the answeres in a dict, using the question name as <strong>key</strong> and the user response as <strong>value</strong>.</p>
+<p>Remember the <code class="docutils literal notranslate"><span class="pre">prompt</span></code> always require a list of <code class="docutils literal notranslate"><span class="pre">Question</span></code> as input.</p>
+</div>
+<div class="section" id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Permalink to this headline">¶</a></h2>
+<p>You can change the colorscheme and some icons passing a theme object defined in inquirer.themes
+There are Default and GreenPassion themes, but you can define your own via class, dict or json!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">inquirer</span>
+<span class="kn">from</span> <span class="nn">inquirer.themes</span> <span class="k">import</span> <span class="n">GreenPassion</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Whats your name?&#39;</span><span class="p">,</span>
+                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;No one&#39;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="s1">&#39;jon&#39;</span><span class="p">,</span>
+                  <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Does Jon Snow know?&#39;</span><span class="p">,</span>
+                  <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">],</span>
+                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">),</span>
+    <span class="n">inquirer</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="s1">&#39;kill_list&#39;</span><span class="p">,</span>
+                      <span class="n">message</span><span class="o">=</span><span class="s1">&#39;Who you want to kill?&#39;</span><span class="p">,</span>
+                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cersei&#39;</span><span class="p">,</span> <span class="s1">&#39;Littlefinger&#39;</span><span class="p">,</span> <span class="s1">&#39;The Mountain&#39;</span><span class="p">]</span>
+                      <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">inquirer</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">theme</span><span class="o">=</span><span class="n">GreenPassion</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<p><img alt="Example of theme (GreenPassion)" src="_images/inquirer_theme.gif" /></p>
+</div>
+<div class="section" id="shortcut-functions">
+<h2>Shortcut functions<a class="headerlink" href="#shortcut-functions" title="Permalink to this headline">¶</a></h2>
+<p>For one-off prompts, you can use the shortcut functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s2">&quot;Enter your username&quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">password</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s1">&#39;Please enter your password&#39;</span><span class="p">),</span>
+<span class="n">choice</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">list_input</span><span class="p">(</span><span class="s2">&quot;Public or private?&quot;</span><span class="p">,</span>
+                              <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="s1">&#39;private&#39;</span><span class="p">])</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="n">inquirer</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="s2">&quot;This will delete all your current labels and &quot;</span>
+                        <span class="s2">&quot;create a new ones. Continue?&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">inquirer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#question-types">Question types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#question-arguments">Question Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-question">Path Question</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-the-question-object">Creating the Question object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-prompter">The prompter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#themes">Themes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shortcut-functions">Shortcut functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html#hall-of-fame">Hall Of Fame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">The MIT License (MIT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">inquirer</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Miguel Ángel García & Adam Uhlíř.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
